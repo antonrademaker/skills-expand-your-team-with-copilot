@@ -1,0 +1,116 @@
+name: 🔧 General Improvement
+description: Request general improvements or changes that don't fit other categories
+title: "[IMPROVEMENT] "
+labels: ["enhancement"]
+assignees:
+  - "Copilot"
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template for improvement requests that don't fit into the other specific categories (bugs, new activities, UI changes, or teacher management).
+
+  - type: input
+    id: improvement_title
+    attributes:
+      label: Improvement Title
+      description: What improvement would you like to see?
+      placeholder: "Example: Add email notifications when students register for activities"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: category
+    attributes:
+      label: What category best describes this improvement?
+      options:
+        - Performance/Speed
+        - Data Management
+        - Reporting/Analytics
+        - Communication/Notifications
+        - System Administration
+        - Documentation
+        - Testing/Quality
+        - Accessibility
+        - Integration with other systems
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: current_situation
+    attributes:
+      label: Current Situation
+      description: Describe how things work currently
+      placeholder: "Example: Teachers have no way to know when students register for activities unless they manually check the system"
+    validations:
+      required: true
+
+  - type: textarea
+    id: desired_improvement
+    attributes:
+      label: Desired Improvement
+      description: Describe in detail what you'd like to see improved
+      placeholder: "Example: Teachers should receive email notifications whenever a student registers or unregisters for an activity they supervise"
+    validations:
+      required: true
+
+  - type: textarea
+    id: benefits
+    attributes:
+      label: Benefits
+      description: How would this improvement help teachers or students?
+      placeholder: "Example: Teachers could respond more quickly to student registrations and better plan for activities"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: complexity
+    attributes:
+      label: How complex do you think this improvement might be?
+      options:
+        - Simple - Small change to existing functionality
+        - Medium - Requires some new development
+        - Complex - Major addition or system change
+        - Not sure
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional Context
+      description: Any other relevant information, examples, or requirements
+      placeholder: "Example: This would be especially helpful during busy registration periods at the start of each semester"
+
+  - type: textarea
+    id: constraints
+    attributes:
+      label: Constraints or Limitations
+      description: Are there any limitations or things to avoid?
+      placeholder: "Example: Should not send too many emails to avoid spam, maybe digest notifications instead of individual emails"
+
+  - type: checkboxes
+    id: acceptance
+    attributes:
+      label: Acceptance Criteria
+      description: When can we consider this improvement complete?
+      options:
+        - label: Improvement is implemented as described
+        - label: Improvement provides the expected benefits
+        - label: Improvement doesn't break existing functionality
+        - label: Improvement is tested and working reliably
+        - label: Teachers can use the improvement effectively
+        - label: Any documentation is updated if needed
+
+  - type: markdown
+    attributes:
+      value: |
+        ## Implementation Hints
+        - Consider which parts of the system would need to be modified
+        - Think about database changes that might be needed in `/src/backend/database.py`
+        - Consider new API endpoints that might be required in `/src/backend/routers/`
+        - Think about frontend changes needed in `/src/static/` files
+        - Consider external dependencies or services that might be needed
+        - Plan for testing the improvement thoroughly
+        - Consider impact on system performance and user experience
