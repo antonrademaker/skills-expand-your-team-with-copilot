@@ -1,0 +1,130 @@
+name: 🎯 New Activity Request
+description: Request to add a new extracurricular activity to the system
+title: "[NEW ACTIVITY] "
+labels: ["enhancement", "new-activity"]
+assignees:
+  - "Copilot"
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template to request adding a new extracurricular activity to the Mergington High School Activities System.
+
+  - type: input
+    id: activity_name
+    attributes:
+      label: Activity Name
+      description: What is the name of the new activity?
+      placeholder: "Example: Photography Club"
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Activity Description
+      description: Provide a detailed description of the activity
+      placeholder: "Example: Learn digital photography techniques, photo editing, and participate in school photography projects"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: day
+    attributes:
+      label: What day(s) will this activity meet?
+      multiple: true
+      options:
+        - Monday
+        - Tuesday
+        - Wednesday
+        - Thursday
+        - Friday
+        - Saturday
+        - Sunday
+    validations:
+      required: true
+
+  - type: dropdown
+    id: time_period
+    attributes:
+      label: When during the day?
+      options:
+        - Before School (6:00-8:00 AM)
+        - After School (3:00-6:00 PM)
+        - Weekend
+        - Other (specify in schedule details)
+    validations:
+      required: true
+
+  - type: input
+    id: start_time
+    attributes:
+      label: Start Time
+      description: What time does the activity start? (24-hour format)
+      placeholder: "Example: 15:30 for 3:30 PM"
+    validations:
+      required: true
+
+  - type: input
+    id: end_time
+    attributes:
+      label: End Time
+      description: What time does the activity end? (24-hour format)
+      placeholder: "Example: 17:00 for 5:00 PM"
+    validations:
+      required: true
+
+  - type: input
+    id: max_participants
+    attributes:
+      label: Maximum Participants
+      description: How many students can participate in this activity?
+      placeholder: "Example: 15"
+    validations:
+      required: true
+
+  - type: input
+    id: supervisor
+    attributes:
+      label: Activity Supervisor
+      description: Which teacher will supervise this activity?
+      placeholder: "Example: Ms. Johnson"
+    validations:
+      required: true
+
+  - type: textarea
+    id: requirements
+    attributes:
+      label: Special Requirements or Equipment
+      description: Any special requirements, equipment, or space needed?
+      placeholder: "Example: Access to computer lab with photo editing software"
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional Context
+      description: Any other important details about this activity?
+      placeholder: "Example: This activity will prepare students for the annual photography contest"
+
+  - type: checkboxes
+    id: acceptance
+    attributes:
+      label: Acceptance Criteria
+      description: When can we consider this request complete?
+      options:
+        - label: Activity is added to the system database with correct schedule details
+        - label: Activity appears on the main activities page
+        - label: Students can successfully register for the activity
+        - label: Activity respects the maximum participant limit
+        - label: Activity appears in the correct time filter categories (morning/afternoon/weekend)
+        - label: Teacher can manage student registrations for this activity
+
+  - type: markdown
+    attributes:
+      value: |
+        ## Implementation Hints
+        - Add the new activity to `initial_activities` dictionary in `/src/backend/database.py`
+        - Ensure the schedule format matches existing activities (days array, start_time, end_time in HH:MM format)
+        - The activity should automatically appear in the UI without additional frontend changes
+        - Test that the time filtering works correctly for the new activity
+        - Verify that registration and unregistration work properly

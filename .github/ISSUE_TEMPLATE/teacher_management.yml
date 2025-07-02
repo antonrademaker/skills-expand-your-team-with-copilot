@@ -1,0 +1,95 @@
+name: 👨‍🏫 Teacher/Authentication Request
+description: Request changes to teacher accounts, authentication, or permissions
+title: "[TEACHER] "
+labels: ["enhancement", "authentication"]
+assignees:
+  - "Copilot"
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template to request changes related to teacher accounts, login system, or permission management.
+
+  - type: dropdown
+    id: request_type
+    attributes:
+      label: What type of teacher/authentication request is this?
+      options:
+        - Add new teacher account
+        - Modify existing teacher account
+        - Fix login/authentication issue
+        - Change teacher permissions
+        - Password reset/recovery
+        - Improve login security
+        - Other authentication improvement
+    validations:
+      required: true
+
+  - type: input
+    id: teacher_info
+    attributes:
+      label: Teacher Information
+      description: Provide teacher name, username, or other relevant details
+      placeholder: "Example: Ms. Sarah Johnson, username should be 'sjohnson'"
+    validations:
+      required: true
+
+  - type: textarea
+    id: request_details
+    attributes:
+      label: Detailed Request
+      description: Explain exactly what needs to be done
+      placeholder: "Example: Add a new teacher account for Ms. Johnson who will be supervising the Photography Club. She needs the same permissions as other teachers to register/unregister students."
+    validations:
+      required: true
+
+  - type: dropdown
+    id: urgency
+    attributes:
+      label: How soon is this needed?
+      options:
+        - Urgent - Teacher needs access immediately
+        - Soon - Within a few days
+        - Not urgent - When convenient
+    validations:
+      required: true
+
+  - type: textarea
+    id: teacher_role
+    attributes:
+      label: Teacher Role and Responsibilities
+      description: What activities or responsibilities will this teacher have?
+      placeholder: "Example: Will supervise Photography Club and help with Art Club registration during busy periods"
+
+  - type: textarea
+    id: security_context
+    attributes:
+      label: Security Considerations
+      description: Any special security requirements or concerns?
+      placeholder: "Example: Teacher should only be able to manage specific activities, not all activities"
+
+  - type: checkboxes
+    id: acceptance
+    attributes:
+      label: Acceptance Criteria
+      description: When can we consider this request complete?
+      options:
+        - label: Teacher account is created/modified as requested
+        - label: Teacher can successfully log into the system
+        - label: Teacher has appropriate permissions for their role
+        - label: Teacher can perform required tasks (register/unregister students)
+        - label: No security vulnerabilities are introduced
+        - label: Teacher information is properly stored in the system
+        - label: Login process works smoothly for the teacher
+
+  - type: markdown
+    attributes:
+      value: |
+        ## Implementation Hints
+        - Teacher accounts are stored in `/src/backend/database.py` in the `initial_teachers` list
+        - Password hashing is handled in `/src/backend/routers/auth.py`
+        - Login functionality is in `/src/static/app.js` (frontend) and `/src/backend/routers/auth.py` (backend)
+        - Teacher authentication is required for student registration/unregistration endpoints
+        - Consider updating the `teachers_collection` initialization if adding new teachers
+        - Ensure password is properly hashed using the existing `hash_password` function
+        - Test the complete login flow after making changes
